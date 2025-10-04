@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #144495;
+
+  /* SHADES */
+  --primary-color-shade: #030b19;
+  --primary-color-shade-half: #0a224b;
+
+  /* TINTS */
+  --primary-color-tint: #d8e0ed;
+  --primary-color-tint-half: #8aa2ca;
+
+  /* TRUE COLOR */
+  --tick-color: #81c35d;
+  --error-color: #e16c5e;
+}

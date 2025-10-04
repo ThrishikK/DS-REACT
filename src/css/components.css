@@ -1,0 +1,13 @@
+button {
+  background-color: var(--primary-color-shade);
+  color: var(--primary-color-tint);
+  font-family: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+.disabled-button {
+  filter: opacity(50%);
+}

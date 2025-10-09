@@ -5,6 +5,10 @@
   gap: 1rem;
 }
 
+.algorithm-heading {
+  align-self: center;
+}
+
 .form-and-result-container {
   display: flex;
   flex-direction: row;
@@ -40,6 +44,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: 0;
+  font-family: inherit;
 }
 
 .bs form button {

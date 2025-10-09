@@ -125,13 +125,14 @@ function BinarySearch() {
 
   return (
     <section className="bs">
-      <h1>Binary Searching Products</h1>
+      <h1 className="algorithm-heading">Binary Searching Products</h1>
       <div className="form-and-result-container">
         {/* FORM ELEMENT */}
         <form onSubmit={handleFormSubmit}>
           <input
             type="text"
             value={givenValue}
+            placeholder="Enter an ID"
             onChange={(e) =>
               dispatch({
                 type: "SET_INPUT_VALUE",

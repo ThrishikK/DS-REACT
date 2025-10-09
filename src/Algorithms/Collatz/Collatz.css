@@ -1,0 +1,54 @@
+.collatz-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.collatz-container p {
+  max-width: 80rem;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--primary-color);
+}
+
+@media (max-width: 50em) {
+  .collatz-container p {
+    max-width: 50rem;
+  }
+}
+
+@media (max-width: 31.25em) {
+  .collatz-container p {
+    max-width: 30rem;
+  }
+}
+
+.highlight {
+  font-weight: bold;
+  color: var(--primary-color-shade);
+  font-size: 2rem;
+}
+
+@media (max-width: 31.25em) {
+  .highlight {
+    font-size: 1.5rem;
+  }
+}
+
+.collatz-container form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.collatz-container form input {
+  width: 30rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 0;
+  font-family: inherit;
+  /*  */
+}

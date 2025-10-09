@@ -6,7 +6,7 @@ export default function Home() {
     <div className="home">
       <h1>Some Basic Algorithms</h1>
       {/* LINKS */}
-      {/* DIVIDE AND CONQUER */}{" "}
+      {/* DIVIDE AND CONQUER */}
       <div className="algorithm-details">
         <div className="link-heading">
           <h3>Divide And Conquer</h3>
@@ -16,7 +16,18 @@ export default function Home() {
             <NavLink to="/binary-search">Binary Search</NavLink>
           </li>
         </ul>
-      </div>{" "}
+      </div>
+      {/* DIVIDE AND CONQUER */}
+      <div className="algorithm-details">
+        <div className="link-heading">
+          <h3>Miscellaneous</h3>
+        </div>
+        <ul>
+          <li>
+            <NavLink to="/collatz">Collatz sequence</NavLink>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

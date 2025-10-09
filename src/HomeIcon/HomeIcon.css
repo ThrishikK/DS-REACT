@@ -1,0 +1,15 @@
+.home-icon-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10; /* Ensure it stays on top */
+}
+
+.home-icon {
+  color: var(--primary-color-tint-half);
+  font-size: 2.4rem;
+  background-color: var(--primary-color-shade-half);
+  padding: 1rem;
+  border-radius: 50%;
+  /* Add a box shadow */
+}

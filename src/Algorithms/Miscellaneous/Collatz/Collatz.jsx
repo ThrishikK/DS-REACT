@@ -23,7 +23,7 @@ const initialData = [
   { iteration: 6, value: 1 },
 ];
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     // console.log(payload);
     const item = payload[0].payload; // Access the full data object

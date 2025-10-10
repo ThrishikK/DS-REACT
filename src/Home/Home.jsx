@@ -15,6 +15,9 @@ export default function Home() {
           <li>
             <NavLink to="/binary-search">Binary Search</NavLink>
           </li>
+          <li>
+            <NavLink to="/image-rebuild">Image Rebuild</NavLink>
+          </li>
         </ul>
       </div>
       {/* DIVIDE AND CONQUER */}

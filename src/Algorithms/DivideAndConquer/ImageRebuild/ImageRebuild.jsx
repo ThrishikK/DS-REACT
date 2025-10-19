@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import rebuildWrapper from "./Algorithm.jsx";
 import "./ImageRebuild.css";
 
+const MAX_DIMENSION = 400;
+const MIN_DIMENSION = 400;
+
 export default function ImageRebuild() {
   const leftCanvasRef = useRef(null);
   const rightCanvasRef = useRef(null);
@@ -9,9 +12,10 @@ export default function ImageRebuild() {
   const [image, setImage] = useState(null);
   const [inputDepth, setInputDepth] = useState(7);
 
+  const [dimension, setDimension] = useState(MAX_DIMENSION);
+
   function handleFormSubmit(e) {
     e.preventDefault();
-
     // console.log(inputDepth);
     // GETTING RIGHT CANVAS
     const rightCanvasElement = rightCanvasRef.current;
@@ -20,17 +24,46 @@ export default function ImageRebuild() {
     rightContext.clearRect(0, 0, 400, 400);
     rebuildWrapper(0, 0, 400, inputDepth, 5, rightContext, image);
   }
-  useEffect(function () {
+
+  function paintImage(dimension) {
     const leftCanvasElement = leftCanvasRef.current;
     const leftContext = leftCanvasElement.getContext("2d");
 
+    // LOADS A RANDOM IMAGE
+
     const img = new Image();
-    img.src = "https://picsum.photos/400";
+    img.src = `https://picsum.photos/${dimension}`;
 
     img.onload = () => {
       setImage(img);
-      leftContext.drawImage(img, 0, 0, 400, 400);
+      leftContext.drawImage(img, 0, 0, dimension, dimension);
     };
+  }
+
+  useEffect(
+    function () {
+      paintImage(dimension);
+    },
+    [dimension]
+  );
+
+  useEffect(function () {
+    function changeDimension() {
+      const newDimesion = Math.floor(window.innerWidth);
+      console.log(newDimesion);
+      let settingDimension = null;
+      if (newDimesion >= 550 && newDimesion < 1500) {
+        settingDimension = 400;
+      } else if (newDimesion < 550) {
+        settingDimension = 300;
+      }
+      console.log(settingDimension);
+      setDimension(settingDimension);
+    }
+
+    window.addEventListener("resize", changeDimension);
+
+    return () => window.removeEventListener("resize", changeDimension);
   }, []);
 
   return (
@@ -55,8 +88,8 @@ export default function ImageRebuild() {
         {/* CANVAS - 1 */}
         <canvas
           ref={leftCanvasRef}
-          width={400}
-          height={400}
+          width={dimension}
+          height={dimension}
           style={{
             border: `3px solid var(--primary-color-shade-half)`,
             borderRadius: "1rem",
@@ -74,8 +107,8 @@ export default function ImageRebuild() {
         {/* CANVAS - 1 */}
         <canvas
           ref={rightCanvasRef}
-          width={400}
-          height={400}
+          width={dimension}
+          height={dimension}
           style={{
             border: `3px solid var(--primary-color-shade-half)`,
             borderRadius: "1rem",

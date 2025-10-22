@@ -3,7 +3,14 @@ import rebuildWrapper from "./Algorithm.jsx";
 import "./ImageRebuild.css";
 
 const MAX_DIMENSION = 400;
-const MIN_DIMENSION = 400;
+const MIN_DIMENSION = 300;
+// console.log(window.innerWidth);
+const START_DIMENSION =
+  window.innerWidth >= 550 && window.innerWidth < 1500
+    ? MAX_DIMENSION
+    : MIN_DIMENSION;
+
+// console.log(START_DIMENSION);
 
 export default function ImageRebuild() {
   const leftCanvasRef = useRef(null);
@@ -12,7 +19,7 @@ export default function ImageRebuild() {
   const [image, setImage] = useState(null);
   const [inputDepth, setInputDepth] = useState(7);
 
-  const [dimension, setDimension] = useState(MAX_DIMENSION);
+  const [dimension, setDimension] = useState(START_DIMENSION);
 
   function handleFormSubmit(e) {
     e.preventDefault();
@@ -55,9 +62,9 @@ export default function ImageRebuild() {
       if (newDimesion >= 550 && newDimesion < 1500) {
         settingDimension = 400;
       } else if (newDimesion < 550) {
-        settingDimension = 300;
+        settingDimension = MIN_DIMENSION;
       }
-      console.log(settingDimension);
+      // console.log(settingDimension);
       setDimension(settingDimension);
     }
 

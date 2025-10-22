@@ -23,6 +23,14 @@
   padding: 0;
 }
 
+@media (max-width: 31.25em) {
+  .home ul {
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: center;
+  }
+}
+
 .home li {
   /* font-size: 24px; */
   cursor: pointer;
@@ -45,6 +53,7 @@
 }
 
 .link-heading {
+  margin: 1.5rem 0.5rem;
 }
 
 .link-heading h3 {

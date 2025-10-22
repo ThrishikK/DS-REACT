@@ -32,16 +32,11 @@
   font-size: 2rem;
 }
 
-@media (max-width: 31.25em) {
-  .highlight {
-    font-size: 1.5rem;
-  }
-}
-
 .collatz-container form {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin: 2rem 0;
 }
 
 .collatz-container form input {
@@ -51,4 +46,38 @@
   border: 0;
   font-family: inherit;
   /*  */
+}
+
+.current-value {
+  color: var(--primary-color-tint);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color-shade),
+    var(--primary-color-tint-half)
+  );
+  width: 16rem;
+  height: 5rem;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-value span {
+  color: var(--primary-color-shade-half);
+  font-weight: 800;
+  margin: 0 1rem;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 31.25em) {
+  .highlight {
+    font-size: 1.5rem;
+  }
+  .collatz-container form {
+    flex-direction: column;
+    align-items: center;
+  }
 }

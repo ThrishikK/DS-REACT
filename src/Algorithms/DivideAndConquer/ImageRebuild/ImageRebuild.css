@@ -12,8 +12,14 @@
   margin-left: 3.2rem;
 }
 
+.points-ul-wrapper li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.8rem;
+}
+
 .canvases-container {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

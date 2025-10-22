@@ -50,12 +50,13 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 function CollatzLineChart() {
-  const [inputValue, setInputValue] = useState(7);
+  const [inputValue, setInputValue] = useState(5);
   const [sequence, setSequence] = useState(initialData);
 
   function handleFormSubmit(e) {
     e.preventDefault();
     // console.log(inputValue);
+    if (inputValue <= 0) return;
     const newSequence = collatzSequence(inputValue);
     setSequence(newSequence);
   }
@@ -74,12 +75,15 @@ function CollatzLineChart() {
         that no matter what positive integer you start with, the sequence will
         eventually reach the number 1
       </p>
-      <form onSubmit={handleFormSubmit}>
+      <form className="collatz-input-form" onSubmit={handleFormSubmit}>
         <input
           placeholder="Enter a number"
           onChange={(e) => setInputValue(Number(e.target.value))}
         />
         <button>Generate</button>
+        <div className="current-value">
+          Current Value : <span>{inputValue}</span>
+        </div>
       </form>
       <div style={{ width: "100%", height: 400 }}>
         <ResponsiveContainer>

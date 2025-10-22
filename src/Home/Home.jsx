@@ -11,7 +11,7 @@ export default function Home() {
         <div className="link-heading">
           <h3>Divide And Conquer</h3>
         </div>
-        <ul>
+        <ul className="">
           <li>
             <NavLink to="/binary-search">Binary Search</NavLink>
           </li>

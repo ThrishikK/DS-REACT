@@ -20,7 +20,18 @@ export default function Home() {
           </li>
         </ul>
       </div>
-      {/* DIVIDE AND CONQUER */}
+      {/* SLIDING WINDOW */}
+      <div className="algorithm-details">
+        <div className="link-heading">
+          <h3>Sliding Window Algorithm</h3>
+        </div>
+        <ul>
+          <li>
+            <NavLink to="/word-in-window">Words in window</NavLink>
+          </li>
+        </ul>
+      </div>
+      {/* MISCELLANIOUS */}
       <div className="algorithm-details">
         <div className="link-heading">
           <h3>Miscellaneous</h3>

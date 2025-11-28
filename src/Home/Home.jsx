@@ -40,6 +40,9 @@ export default function Home() {
           <li>
             <NavLink to="/collatz">Collatz sequence</NavLink>
           </li>
+          <li>
+            <NavLink to="/conways-game-of-life">Conway's Game of Life</NavLink>
+          </li>
         </ul>
       </div>
     </div>

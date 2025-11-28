@@ -1,0 +1,64 @@
+.conways-game-of-life-container {
+  padding: 1rem;
+}
+
+.conways-heading {
+  margin: 0.6rem 2rem;
+}
+
+.conways-heading + p {
+  font-size: 1.8rem;
+}
+
+.conways-ul-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.6rem;
+  font-size: 1.8rem;
+  padding: 0 2rem;
+  list-style-type: disclosure-closed;
+}
+
+.grid-container {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(25, 2rem);
+  grid-template-rows: repeat(25, 2rem);
+  justify-content: center;
+  align-content: center;
+  gap: 0.2rem;
+}
+
+.conways-box {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--primary-color-shade-half);
+  /* margin: 0.2rem; */
+}
+
+@media (max-width: 40.625em) {
+  .grid-container {
+    grid-template-columns: repeat(25, 1.5rem);
+    grid-template-rows: repeat(25, 1.5rem);
+    gap: 0.1rem;
+  }
+
+  .conways-box {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 28.125em) {
+  .grid-container {
+    grid-template-columns: repeat(25, 1rem);
+    grid-template-rows: repeat(25, 1rem);
+    gap: 0.1rem;
+  }
+
+  .conways-box {
+    width: 1rem;
+    height: 1rem;
+  }
+}

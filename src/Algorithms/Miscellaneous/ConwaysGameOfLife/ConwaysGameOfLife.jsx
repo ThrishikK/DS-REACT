@@ -1,19 +1,23 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightLong, faDownLong } from "@fortawesome/free-solid-svg-icons";
-
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import CanvasHelper from "./CanvasHelper";
 import "./ConwaysGameOfLife.css";
 
 const numRows = 25;
 const numCols = 25;
+let blankRequested = false;
+
+function getGrid() {
+  const generatedGrid = Array.from({ length: numRows }, () =>
+    // Array.from({ length: 10 }, () => (Math.random() > 0.7 ? 1 : 0))
+    Array.from({ length: numCols }, function () {
+      return blankRequested ? 0 : Math.random() > 0.7 ? 1 : 0;
+    })
+  );
+  return generatedGrid;
+}
 
 function ConwaysGameOfLife() {
-  const [grid, setGrid] = useState(() =>
-    Array.from({ length: numRows }, () =>
-      Array.from({ length: numCols }, () => (Math.random() > 0.7 ? 1 : 0))
-    )
-  );
+  const [grid, setGrid] = useState(() => getGrid());
 
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
@@ -64,6 +68,36 @@ function ConwaysGameOfLife() {
     }
   }
 
+  function handleResetBtn() {
+    setRunning(false);
+    runningRef.current = false;
+    setGrid(getGrid());
+  }
+
+  function handleGetBlankBoard() {
+    handleResetBtn();
+    blankRequested = true;
+    setGrid(getGrid());
+    blankRequested = false;
+  }
+
+  function handleCellClick(event) {
+    const index = event.target.getAttribute("data-index");
+    if (!index) return;
+    setRunning(false);
+    runningRef.current = false;
+    const [i, j] = index.split("-").map(Number);
+    const newGrid = grid.map((row, rowIndex) =>
+      row.map((cell, colIndex) => {
+        if (rowIndex === i && colIndex === j) {
+          return cell === 1 ? 0 : 1;
+        }
+        return cell;
+      })
+    );
+    setGrid(newGrid);
+  }
+
   return (
     <div className="conways-game-of-life-container">
       <h1 className="conways-heading">🧬 Conway's Game of Life</h1>
@@ -77,11 +111,19 @@ function ConwaysGameOfLife() {
         </li>
       </ul>
       {/*  */}
-      <button onClick={handleConwayBtnClick} className="conways-game-btn">
-        {running ? "Stop" : "Start"}
-      </button>
+      <div className="conway-btns-container">
+        <button onClick={handleConwayBtnClick} className="conways-game-btn">
+          {running ? "Stop" : "Start"}
+        </button>
+        <button onClick={handleResetBtn} className="conways-game-btn">
+          Reset
+        </button>
+        <button onClick={handleGetBlankBoard} className="conways-game-btn">
+          Blank
+        </button>
+      </div>
       {/* GAME OF LIFE CONTAINER */}
-      <div className="grid-container">
+      <div className="grid-container" onClick={handleCellClick}>
         {grid.map(function (eachRow, i) {
           // console.log(eachRow);
           return eachRow.map(function (cell, j) {
@@ -89,6 +131,7 @@ function ConwaysGameOfLife() {
             return (
               <div
                 className="conways-box"
+                data-index={`${i}-${j}`}
                 key={`${i + 1}-${j + 1}`}
                 style={{
                   backgroundColor:

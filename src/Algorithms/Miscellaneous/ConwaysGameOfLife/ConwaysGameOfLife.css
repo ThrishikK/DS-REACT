@@ -24,6 +24,11 @@
   list-style-type: disclosure-closed;
 }
 
+.conway-btns-container {
+  display: flex;
+  gap: 0.8rem;
+}
+
 .conways-game-btn {
   text-align: center;
   margin: 1rem 0;
